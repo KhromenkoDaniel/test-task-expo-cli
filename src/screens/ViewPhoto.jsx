@@ -3,9 +3,11 @@ import {ActivityIndicator, Image, View} from "react-native";
 
 const ViewPhoto = (props) => {
     const {itemData} = props.route.params;
-
     const [loading, setLoading] = React.useState(false);
 
+React.useEffect(() => {
+    props.navigation.setOptions({title: itemData?.alt_description ? itemData?.alt_description.slice(0,25) + '...' :'No description'});
+}, []);
     const handleLoad = () => {
         setLoading(prevState => !prevState);
     }
