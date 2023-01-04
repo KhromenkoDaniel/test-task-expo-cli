@@ -11,7 +11,7 @@ const NavigationController = () => {
         <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen
-                    options={{headerShown: false}}
+                    options={{headerShown: true}}
                     name="Home" component={Home} />
                 <Stack.Screen options={{headerShown: true, title: "Photo"}} name="ViewPhoto" component={ViewPhoto} />
             </Stack.Navigator>
