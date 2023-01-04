@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {View, Text, SafeAreaView, ScrollView, ActivityIndicator, RefreshControl} from "react-native";
+import {View,Alert, SafeAreaView, ScrollView, ActivityIndicator, RefreshControl} from "react-native";
 import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import {setApiCards} from "../store/actions";
@@ -17,7 +17,9 @@ const Home = () => {
             then((response) => {
                 dispatch(setApiCards(response.data));
                 setLoading(false);
-            }).catch((error) => {
+            }).catch((err) => {
+                console.log(err)
+                Alert.alert('Error', 'Something went wrong');
                 setLoading(true);
             });
         })();
@@ -30,8 +32,9 @@ const Home = () => {
             then((response) => {
                 dispatch(setApiCards(response.data));
                 setLoading(false);
-                console.log('new items loaded');
-            }).catch((error) => {
+            }).catch((err) => {
+                console.log(err)
+                Alert.alert('Error', 'Something went wrong');
                 setLoading(true);
             });
         })();
